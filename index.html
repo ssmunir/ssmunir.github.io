@@ -5,134 +5,253 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Munir | Economics Research Portfolio</title>
     <style>
+        :root {
+            --primary-color: #1a365d;
+            --accent-color: #2b6cb0;
+            --text-main: #2d3748;
+            --text-light: #718096;
+            --bg-color: #f7fafc;
+            --card-bg: #ffffff;
+            --border-color: #e2e8f0;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 900px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.7;
+            color: var(--text-main);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 20px;
-            background-color: #f9f9f9;
+            padding: 0 24px;
         }
+
         header {
+            background-color: var(--card-bg);
+            padding: 60px 0;
+            border-bottom: 1px solid var(--border-color);
             text-align: center;
-            padding: 40px 0;
-            border-bottom: 2px solid #2c3e50;
-            margin-bottom: 30px;
         }
+
         h1 {
-            color: #2c3e50;
-            margin-bottom: 5px;
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin: 0 0 10px 0;
+            letter-spacing: -0.5px;
         }
-        h2 {
-            color: #2980b9;
-            border-bottom: 1px solid #ccc;
-            padding-bottom: 5px;
-            margin-top: 40px;
-        }
+
         .subtitle {
-            font-size: 1.2em;
-            color: #7f8c8d;
+            font-size: 1.25rem;
+            color: var(--text-light);
+            font-weight: 400;
         }
-        .paper {
-            background: #fff;
-            padding: 20px;
-            margin-bottom: 15px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+
+        section {
+            padding: 50px 0;
+            border-bottom: 1px solid var(--border-color);
         }
-        .paper-title {
-            font-weight: bold;
-            font-size: 1.1em;
-            color: #2c3e50;
+
+        section:last-of-type {
+            border-bottom: none;
         }
-        .paper-desc {
-            font-size: 0.95em;
-            color: #555;
-            margin: 10px 0;
-        }
-        .btn {
-            display: inline-block;
-            background: #2980b9;
-            color: #fff;
-            padding: 8px 15px;
-            text-decoration: none;
-            border-radius: 4px;
-            font-size: 0.9em;
-        }
-        .btn:hover {
-            background: #21618c;
-        }
-        .skills-container {
+
+        h2 {
+            color: var(--primary-color);
+            font-size: 1.75rem;
+            margin-bottom: 30px;
             display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
+            align-items: center;
         }
-        .skill-category {
+
+        h2::after {
+            content: "";
             flex: 1;
-            min-width: 250px;
-            background: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            margin-left: 20px;
+            height: 1px;
+            background-color: var(--border-color);
         }
+
+        .about-text {
+            font-size: 1.1rem;
+            max-width: 800px;
+            color: var(--text-main);
+        }
+
+        /* Papers Grid */
+        .papers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 24px;
+        }
+
+        .paper-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 24px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .paper-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .paper-title {
+            font-weight: 600;
+            font-size: 1.15rem;
+            color: var(--primary-color);
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .paper-desc {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .btn {
+            align-self: flex-start;
+            background-color: var(--card-bg);
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+            padding: 8px 16px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-color);
+            color: #ffffff;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+        }
+
+        .skill-group {
+            background: var(--card-bg);
+            padding: 24px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .skill-group h3 {
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .skill-group p {
+            margin: 0;
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
         footer {
             text-align: center;
-            margin-top: 50px;
-            padding: 20px 0;
-            color: #7f8c8d;
-            font-size: 0.9em;
+            padding: 40px 0;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            background-color: var(--card-bg);
+            border-top: 1px solid var(--border-color);
+        }
+
+        @media (max-width: 600px) {
+            .papers-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Munir</h1>
-        <div class="subtitle">M.S. in Economics | Statistical Consultant</div>
+        <div class="container">
+            <h1>Munir</h1>
+            <div class="subtitle">M.S. in Economics | Statistical Consultant</div>
+        </div>
     </header>
 
-    <section id="about">
-        <h2>About</h2>
-        <p>I am an economics researcher holding a Master of Science in Economics from The George Washington University. Alongside my research, I serve as a Statistical Consultant, advising students, faculty, and staff on research design, econometric modeling, and the implementation of robust statistical methodologies.</p>
-    </section>
+    <div class="container">
+        <section id="about">
+            <h2>About</h2>
+            <p class="about-text">I am an economics researcher holding a Master of Science in Economics from The George Washington University. Alongside my research, I serve as a Statistical Consultant, advising students, faculty, and staff on research design, econometric modeling, and the implementation of robust statistical methodologies.</p>
+        </section>
 
-    <section id="research">
-        <h2>Research & Papers</h2>
-        
-        <div class="paper">
-            <div class="paper-title">Pollution and Production: Evaluating Air Pollutants as Proxies for Sectoral Economic Activity</div>
-            <div class="paper-desc">An empirical evaluation utilizing satellite imagery to assess PM2.5, NO2, and SO2 data as proxies for economic indicators across districts in Pakistan.</div>
-            <a href="papers/Determinants of Terrorism.pdf" class="btn" target="_blank">Read Paper (PDF)</a>
-        </div>
+        <section id="research">
+            <h2>Research & Working Papers</h2>
+            <div class="papers-grid">
+                
+                <!-- Paper 1 -->
+                <div class="paper-card">
+                    <div class="paper-title">Pollution and Production: Evaluating Air Pollutants as Proxies for Sectoral Economic Activity</div>
+                    <div class="paper-desc">An empirical evaluation utilizing satellite imagery to assess PM2.5, NO2, and SO2 data as proxies for economic indicators across districts in Pakistan.</div>
+                    <a href="papers/pollution-production.pdf" class="btn" target="_blank">View Paper</a>
+                </div>
 
-        <div class="paper">
-            <div class="paper-title">Decomposition of the Multidimensional Poverty Index</div>
-            <div class="paper-desc">A detailed quantitative analysis examining the structural components and driving factors within the Multidimensional Poverty Index.</div>
-            <a href="papers/Intensity_vs_Incidence_Munir_Salihu.pdf" class="btn" target="_blank">Read Paper (PDF)</a>
-        </div>
-    </section>
+                <!-- Paper 2 -->
+                <div class="paper-card">
+                    <div class="paper-title">Decomposition of the Multidimensional Poverty Index</div>
+                    <div class="paper-desc">A detailed quantitative analysis examining the structural components and driving factors within the Multidimensional Poverty Index.</div>
+                    <a href="papers/mpi-decomposition.pdf" class="btn" target="_blank">View Paper</a>
+                </div>
 
-    <section id="skills">
-        <h2>Technical Competencies</h2>
-        <div class="skills-container">
-            <div class="skill-category">
-                <h3>Econometrics & Data Analysis</h3>
-                <p>Python, R, Stata, SPSS, LaTeX</p>
+                <!-- Paper 3 (Placeholder) -->
+                <div class="paper-card">
+                    <div class="paper-title">[Working Title for Third Research Paper]</div>
+                    <div class="paper-desc">A brief abstract or description of the research methodology, primary data sources, and the core economic question being addressed in this paper.</div>
+                    <a href="#" class="btn">Coming Soon</a>
+                </div>
+
+                <!-- Paper 4 (Placeholder) -->
+                <div class="paper-card">
+                    <div class="paper-title">[Working Title for Fourth Research Paper]</div>
+                    <div class="paper-desc">A brief abstract or description of the research methodology, primary data sources, and the core economic question being addressed in this paper.</div>
+                    <a href="#" class="btn">Coming Soon</a>
+                </div>
+
             </div>
-            <div class="skill-category">
-                <h3>Spatial & Geographic Modeling</h3>
-                <p>QGIS, ArcGIS Pro, GeoPandas, Google Earth Engine</p>
+        </section>
+
+        <section id="skills">
+            <h2>Technical Competencies</h2>
+            <div class="skills-grid">
+                <div class="skill-group">
+                    <h3>Econometrics & Analysis</h3>
+                    <p>Python, R, Stata, SPSS, LaTeX</p>
+                </div>
+                <div class="skill-group">
+                    <h3>Spatial & Geographic Modeling</h3>
+                    <p>QGIS, ArcGIS Pro, GeoPandas, Google Earth Engine</p>
+                </div>
+                <div class="skill-group">
+                    <h3>Automation & Data Extraction</h3>
+                    <p>Selenium, Web Scraping, Excel VBA, xlsxwriter</p>
+                </div>
             </div>
-            <div class="skill-category">
-                <h3>Automation & Scraping</h3>
-                <p>Selenium, Web Extraction, Excel VBA, xlsxwriter</p>
-            </div>
-        </div>
-    </section>
+        </section>
+    </div>
 
     <footer>
-        <p>&copy; 2026 Munir. Hosted on GitHub Pages.</p>
+        <div class="container">
+            <p>&copy; 2026 Munir. Hosted on GitHub Pages.</p>
+        </div>
     </footer>
 
 </body>
